@@ -34,18 +34,26 @@ public class Controller
 	@FXML // fx:id="eventTimerLabel"
 	private Label eventTimerLabel; // Value injected by FXMLLoader
 
+	@FXML // fx:id="eventStartButton"
+	private Button eventStartButton; // Value injected by FXMLLoader
+
+	@FXML // fx:id="eventEndButton"
+	private Button eventEndButton; // Value injected by FXMLLoader
+
+	@FXML // fx:id="lastPeriodLabel"
+	private Label lastPeriodLabel; // Value injected by FXMLLoader
+
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize()
 	{
-		assert overallStartButton != null :
-			"fx:id=\"overallStartButton\" was not injected: check your FXML file 'sample.fxml'.";
-		assert overallStopButton != null :
-			"fx:id=\"overallStopButton\" was not injected: check your FXML file 'sample.fxml'.";
-		assert overallTimerLabel != null :
-			"fx:id=\"overallTimerLabel\" was not injected: check your FXML file 'sample.fxml'.";
-		assert eventTimerLabel != null :
-			"fx:id=\"eventTimerLabel\" was not injected: check your FXML file 'sample.fxml'.";
+		assert overallStartButton != null : "fx:id=\"overallStartButton\" was not injected: check your FXML file 'sample.fxml'.";
+		assert overallStopButton != null : "fx:id=\"overallStopButton\" was not injected: check your FXML file 'sample.fxml'.";
+		assert overallTimerLabel != null : "fx:id=\"overallTimerLabel\" was not injected: check your FXML file 'sample.fxml'.";
+		assert eventTimerLabel != null : "fx:id=\"eventTimerLabel\" was not injected: check your FXML file 'sample.fxml'.";
+		assert eventStartButton != null : "fx:id=\"eventStartButton\" was not injected: check your FXML file 'sample.fxml'.";
+		assert eventEndButton != null : "fx:id=\"eventEndButton\" was not injected: check your FXML file 'sample.fxml'.";
+		assert lastPeriodLabel != null : "fx:id=\"lastPeriodLabel\" was not injected: check your FXML file 'sample.fxml'.";
 
 	}
 }

@@ -23,21 +23,21 @@ import javafx.stage.Stage;
 public class Main extends Application
 {
 
+	public static void main( String[] args )
+	{
+		launch( args );
+	}
+
+
 	@Override public void start( Stage primaryStage ) throws Exception
 	{
 		// Load the UI from a FXML file.
 		Parent root = FXMLLoader.load( getClass().getResource( "view/sample.fxml" ) );
 		// Set the title.
-		primaryStage.setTitle( "Hello World" );
+		primaryStage.setTitle( "Interval Timer" );
 		// Set the size of the scene.  This will need to be tailored to work well with the final UI layout.
 		primaryStage.setScene( new Scene( root, 300, 275 ) );
 		// Display the stage.
 		primaryStage.show();
-	}
-
-
-	public static void main( String[] args )
-	{
-		launch( args );
 	}
 }

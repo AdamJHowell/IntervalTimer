@@ -1,5 +1,6 @@
 package com.adamjhowell.IntervalTimer;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,18 +20,24 @@ import javafx.stage.Stage;
  * I may also include an option to rate the event (intensity of each contraction).
  */
 
-public class Main extends Application {
+public class Main extends Application
+{
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource( "sample.fxml" ) );
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
+	@Override public void start( Stage primaryStage ) throws Exception
+	{
+		// Load the UI from a FXML file.
+		Parent root = FXMLLoader.load( getClass().getResource( "view/sample.fxml" ) );
+		// Set the title.
+		primaryStage.setTitle( "Hello World" );
+		// Set the size of the scene.  This will need to be tailored to work well with the final UI layout.
+		primaryStage.setScene( new Scene( root, 300, 275 ) );
+		// Display the stage.
+		primaryStage.show();
+	}
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	public static void main( String[] args )
+	{
+		launch( args );
+	}
 }

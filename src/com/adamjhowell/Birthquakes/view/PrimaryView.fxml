@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane xmlns:fx = "http://javafx.com/fxml/1" alignment = "center" hgap = "10" vgap = "10"
+          xmlns = "http://javafx.com/javafx/8.0.65" fx:controller = "com.adamjhowell.Birthquakes.Controller">
+	<rowConstraints>
+		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
+		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
+		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
+		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
+		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
+	</rowConstraints>
+	<columnConstraints>
+		<ColumnConstraints minWidth = "100.0" prefWidth = "100.0"/>
+		<ColumnConstraints minWidth = "100.0" prefWidth = "100.0"/>
+	</columnConstraints>
+	<Button fx:id = "overallStartButton" mnemonicParsing = "false" text = "Start" GridPane.rowIndex = "3"/>
+	<Button fx:id = "overallStopButton" mnemonicParsing = "false" text = "Stop" GridPane.columnIndex = "1"
+	        GridPane.rowIndex = "3"/>
+	<Label text = "Overall Time"/>
+	<Label text = "Current Event" GridPane.rowIndex = "1"/>
+	<Label fx:id = "overallTimerLabel" text = "(not started)" GridPane.columnIndex = "1"/>
+	<Label fx:id = "eventTimerLabel" text = "(not started)" GridPane.columnIndex = "1" GridPane.rowIndex = "1"/>
+	<Button fx:id = "eventStartButton" mnemonicParsing = "false" text = "Event Start" GridPane.rowIndex = "4"/>
+	<Button fx:id = "eventEndButton" mnemonicParsing = "false" text = "Event End" GridPane.columnIndex = "1"
+	        GridPane.rowIndex = "4"/>
+	<Label text = "Last period" GridPane.rowIndex = "2"/>
+	<Label fx:id = "lastPeriodLabel" text = "(none)" GridPane.columnIndex = "1" GridPane.rowIndex = "2"/>
+</GridPane>

@@ -39,10 +39,8 @@ public class Main extends Application
 		primaryStage.setTitle( "Birthquakes" );
 		// Set the size of the scene.  This will need to be tailored to work well with the final UI layout.
 		primaryStage.setScene( new Scene( root, 300, 275 ) );
-		// Set the icon for a non-Maven build.
+		// Set the icon.
 		primaryStage.getIcons().add( new Image( getClass().getResourceAsStream( "baby-512x512.png" ) ) );
-		// Set the icon for a Maven build.
-		//primaryStage.getIcons().add( new Image( "images/baby-32x32.png" ) );
 		// Display the stage.
 		primaryStage.show();
 	}

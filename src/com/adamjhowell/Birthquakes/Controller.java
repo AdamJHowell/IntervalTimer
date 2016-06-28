@@ -1,11 +1,16 @@
 package com.adamjhowell.Birthquakes;
 
 
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.value.ObservableLongValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 
@@ -15,59 +20,67 @@ public class Controller
 	@FXML private ResourceBundle resources;
 	// URL location of the FXML file that was given to the FXMLLoader
 	@FXML private URL location;
-	@FXML private Button overallStartButton; // Value injected by FXMLLoader
-	@FXML private Button overallStopButton; // Value injected by FXMLLoader
 	@FXML private Label overallTimerLabel; // Value injected by FXMLLoader
-	@FXML private Label eventTimerLabel; // Value injected by FXMLLoader
-	@FXML private Button eventStartButton; // Value injected by FXMLLoader
-	@FXML private Button eventEndButton; // Value injected by FXMLLoader
-	@FXML private Label lastPeriodLabel; // Value injected by FXMLLoader
+	@FXML
+	private Label quakeTimerLabel; // Value injected by FXMLLoader
+	@FXML
+	private Label lastIntervalLabel; // Value injected by FXMLLoader
+	@FXML
+	private Button quakeStartButton; // Value injected by FXMLLoader
+	@FXML
+	private Button quakeEndButton; // Value injected by FXMLLoader
+
+
+	private static long GetCurrentDate()
+	{
+		// Instantiate a Date object with the current system date.
+//		Date date = new Date();
+
+		// Display time and date.
+		//System.out.println( "Current date: " + date.toString());
+
+		// Return the current epoch date.
+		return new Date().getTime();
+	} // End of GetCurrentDate() method.
 
 
 	// This method is called by the FXMLLoader when initialization is complete
 	@FXML void initialize()
 	{
-		assert overallStartButton != null :
-			"fx:id=\"overallStartButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
-		assert overallStopButton != null :
-			"fx:id=\"overallStopButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
+		final ObservableLongValue quakeDuration = new SimpleLongProperty( 1234L );
 		assert overallTimerLabel != null :
 			"fx:id=\"overallTimerLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
-		assert eventTimerLabel != null :
-			"fx:id=\"eventTimerLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
-		assert eventStartButton != null :
-			"fx:id=\"eventStartButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
-		assert eventEndButton != null :
-			"fx:id=\"eventEndButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
-		assert lastPeriodLabel != null :
-			"fx:id=\"lastPeriodLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
-		overallStartButton.setOnAction( event -> OverallStart() );
-		overallStopButton.setOnAction( event -> OverallStop() );
-		eventStartButton.setOnAction( event -> EventStart() );
-		eventEndButton.setOnAction( event -> EventStop() );
+		assert quakeTimerLabel != null :
+			"fx:id=\"quakeTimerLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
+		assert lastIntervalLabel != null :
+			"fx:id=\"lastIntervalLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
+		assert quakeStartButton != null :
+			"fx:id=\"quakeStartButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
+		assert quakeEndButton != null :
+			"fx:id=\"quakeEndButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
+
+		quakeTimerLabel.setTooltip( new Tooltip( "Asdf" ) );
+		quakeStartButton.setOnAction( event -> QuakeStart() );
+		quakeEndButton.setOnAction( event -> QuakeStop() );
 	}
 
 
-	private void OverallStart()
+	private void QuakeStart()
 	{
-		System.out.println( "Overall start." );
+		long tempDate = GetCurrentDate();
+		SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ssz" );
+		String tempTime = formatter.format( tempDate );
+		System.out.println( "Full start: " + tempTime );
+		final String finalTime = tempTime.substring( 0, 19 ) + tempTime.substring( 22, tempTime.length() );
+		System.out.println( "Quake start: " + finalTime );
 	}
 
 
-	private void OverallStop()
+	private void QuakeStop()
 	{
-		System.out.println( "Overall stop." );
-	}
-
-
-	private void EventStart()
-	{
-		System.out.println( "Event start." );
-	}
-
-
-	private void EventStop()
-	{
-		System.out.println( "Event stop." );
+		long tempDate = GetCurrentDate();
+		SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ssz" );
+		String tempTime = formatter.format( tempDate );
+		System.out.println( "Quake stop: " + tempTime.substring( 0, 19 ) + tempTime.substring( 22, tempTime.length() ) );
 	}
 }

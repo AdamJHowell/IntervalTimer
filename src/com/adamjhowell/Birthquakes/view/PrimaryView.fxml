@@ -16,8 +16,8 @@
 	</columnConstraints>
 	<Label text = "Overall Time"/>
 	<Label text = "Current Quake" GridPane.rowIndex = "1"/>
-	<Label fx:id = "overallTimerLabel" text = "(not started)" GridPane.columnIndex = "1"/>
-	<Label fx:id = "quakeTimerLabel" text = "(not started)" GridPane.columnIndex = "1" GridPane.rowIndex = "1"/>
+	<Label fx:id = "overallTimerLabel" text = "00:00:00" GridPane.columnIndex = "1"/>
+	<Label fx:id = "quakeTimerLabel" text = "00:00:00" GridPane.columnIndex = "1" GridPane.rowIndex = "1"/>
 	<Button fx:id = "quakeStartButton" mnemonicParsing = "false" text = "Quake Start" GridPane.rowIndex = "3"/>
 	<Button fx:id = "quakeEndButton" mnemonicParsing = "false" text = "Quake End" GridPane.columnIndex = "1"
 	        GridPane.rowIndex = "3"/>

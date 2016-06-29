@@ -23,6 +23,7 @@ public class Controller
 {
 	AJHTimer overallTimer = new AJHTimer();
 	private List< TimeEvent > eventList = new ArrayList<>();
+	private AJHTimer quakeTimer = new AJHTimer();
 	// ResourceBundle that was given to the FXMLLoader
 	@FXML
 	private ResourceBundle resources;
@@ -39,7 +40,8 @@ public class Controller
 	private Button quakeStartButton; // Value injected by FXMLLoader
 	@FXML
 	private Button quakeEndButton; // Value injected by FXMLLoader
-	private AJHTimer quakeTimer = new AJHTimer();
+	@FXML
+	private Button displayStatsButton; // Value injected by FXMLLoader
 
 
 	private static long GetCurrentDate()
@@ -71,6 +73,7 @@ public class Controller
 		lastIntervalLabel.setTooltip( new Tooltip( "The time between the previous and the current birthquake." ) );
 		quakeStartButton.setOnAction( event -> QuakeStart() );
 		quakeEndButton.setOnAction( event -> QuakeStop() );
+		displayStatsButton.setOnAction( event -> DisplayLog() );
 		// Set overallTimerLabel to the current time for testing.
 		final DateFormat format = DateFormat.getInstance();
 		final Timeline timeline = new Timeline( new KeyFrame( Duration.seconds( 1 ), event -> {

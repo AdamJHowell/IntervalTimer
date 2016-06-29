@@ -9,6 +9,7 @@
 		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
 		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
 		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
+		<RowConstraints minHeight = "30.0" prefHeight = "30.0"/>
 	</rowConstraints>
 	<columnConstraints>
 		<ColumnConstraints minWidth = "100.0" prefWidth = "100.0"/>
@@ -23,4 +24,5 @@
 	        GridPane.rowIndex = "3"/>
 	<Label text = "Last interval" GridPane.rowIndex = "2"/>
 	<Label fx:id = "lastIntervalLabel" text = "(none)" GridPane.columnIndex = "1" GridPane.rowIndex = "2"/>
+	<Button fx:id = "displayStatsButton" mnemonicParsing = "false" text = "Display Stats" GridPane.rowIndex = "4"/>
 </GridPane>

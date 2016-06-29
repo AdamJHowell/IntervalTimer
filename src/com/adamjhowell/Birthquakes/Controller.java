@@ -22,15 +22,23 @@ import java.util.*;
 public class Controller
 {
 	AJHTimer overallTimer = new AJHTimer();
+	private List< TimeEvent > eventList = new ArrayList<>();
 	// ResourceBundle that was given to the FXMLLoader
-	@FXML private ResourceBundle resources;
+	@FXML
+	private ResourceBundle resources;
 	// URL location of the FXML file that was given to the FXMLLoader
-	@FXML private URL location;
-	@FXML private Label overallTimerLabel; // Value injected by FXMLLoader
-	@FXML private Label quakeTimerLabel; // Value injected by FXMLLoader
-	@FXML private Label lastIntervalLabel; // Value injected by FXMLLoader
-	@FXML private Button quakeStartButton; // Value injected by FXMLLoader
-	@FXML private Button quakeEndButton; // Value injected by FXMLLoader
+	@FXML
+	private URL location;
+	@FXML
+	private Label overallTimerLabel; // Value injected by FXMLLoader
+	@FXML
+	private Label quakeTimerLabel; // Value injected by FXMLLoader
+	@FXML
+	private Label lastIntervalLabel; // Value injected by FXMLLoader
+	@FXML
+	private Button quakeStartButton; // Value injected by FXMLLoader
+	@FXML
+	private Button quakeEndButton; // Value injected by FXMLLoader
 	private AJHTimer quakeTimer = new AJHTimer();
 
 
@@ -48,10 +56,10 @@ public class Controller
 
 
 	// This method is called by the FXMLLoader when initialization is complete
-	@FXML void initialize()
+	@FXML
+	void initialize()
 	{
 		final ObservableLongValue quakeDuration = new SimpleLongProperty( 0L );
-		List< TimeEvent > eventList = new ArrayList<>();
 		assert overallTimerLabel != null : "fx:id=\"overallTimerLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
 		assert quakeTimerLabel != null : "fx:id=\"quakeTimerLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
 		assert lastIntervalLabel != null : "fx:id=\"lastIntervalLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
@@ -78,20 +86,35 @@ public class Controller
 	private void QuakeStart()
 	{
 		long tempDate = GetCurrentDate();
+		eventList.add( new TimeEvent( tempDate, "QuakeStart" ) );
 		SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ssz" );
 		String tempTime = formatter.format( tempDate );
 		System.out.println( "Quake starting at: " + tempTime.substring( 0, 19 ) );
 		quakeTimer.startTimer( quakeTimer.getTime() );
 		quakeTimerLabel.setText( quakeTimer.getSSPTime().get() );
+		System.out.println( "Starting at " + quakeTimer.getSSPTime().get() );
 	}
 
 
 	private void QuakeStop()
 	{
 		long tempDate = GetCurrentDate();
+		eventList.add( new TimeEvent( tempDate, "QuakeStop" ) );
 		SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ssz" );
 		String tempTime = formatter.format( tempDate );
 		System.out.println( "Quake ending at: " + tempTime.substring( 0, 19 ) );
+		quakeTimerLabel.setText( quakeTimer.getSSPTime().get() );
+		System.out.println( "Stopping at " + quakeTimer.getSSPTime().get() );
 		quakeTimer.stopTimer();
+		//DisplayLog();
+	}
+
+
+	private void DisplayLog()
+	{
+		for( TimeEvent entry : eventList )
+		{
+			System.out.println( entry.getEventTime() + " " + entry.getEventType() );
+		}
 	}
 }

@@ -42,6 +42,8 @@ public class Controller
 	private Button quakeEndButton; // Value injected by FXMLLoader
 	@FXML
 	private Button displayStatsButton; // Value injected by FXMLLoader
+	@FXML
+	private Button resetButton; // Value injected by FXMLLoader
 
 
 	private static long GetCurrentDate()
@@ -67,6 +69,7 @@ public class Controller
 		assert lastIntervalLabel != null : "fx:id=\"lastIntervalLabel\" was not injected: check your FXML file 'PrimaryView.fxml'.";
 		assert quakeStartButton != null : "fx:id=\"quakeStartButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
 		assert quakeEndButton != null : "fx:id=\"quakeEndButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
+		assert resetButton != null : "fx:id=\"quakeEndButton\" was not injected: check your FXML file 'PrimaryView.fxml'.";
 
 		overallTimerLabel.setTooltip( new Tooltip( "The overall duration, since the first birthquake." ) );
 		quakeTimerLabel.setTooltip( new Tooltip( "The duration of the current birthquake." ) );
@@ -74,6 +77,7 @@ public class Controller
 		quakeStartButton.setOnAction( event -> QuakeStart() );
 		quakeEndButton.setOnAction( event -> QuakeStop() );
 		displayStatsButton.setOnAction( event -> DisplayLog() );
+		resetButton.setOnAction( event -> ResetTime() );
 		// Set overallTimerLabel to the current time for testing.
 		final DateFormat format = DateFormat.getInstance();
 		final Timeline timeline = new Timeline( new KeyFrame( Duration.seconds( 1 ), event -> {
@@ -119,5 +123,15 @@ public class Controller
 		{
 			System.out.println( entry.getEventTime() + " " + entry.getEventType() );
 		}
+	}
+
+
+	private void ResetTime()
+	{
+		long tempDate = GetCurrentDate();
+		eventList.add( new TimeEvent( tempDate, "QuakeReset" ) );
+		System.out.println( "Time was at " + quakeTimer.getSSPTime().get() + " when it was reset." );
+		quakeTimer.moveToTime( 0 );
+		quakeTimerLabel.setText( quakeTimer.getSSPTime().get() );
 	}
 }

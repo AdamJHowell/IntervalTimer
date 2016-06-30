@@ -25,4 +25,6 @@
 	<Label text = "Last interval" GridPane.rowIndex = "2"/>
 	<Label fx:id = "lastIntervalLabel" text = "(none)" GridPane.columnIndex = "1" GridPane.rowIndex = "2"/>
 	<Button fx:id = "displayStatsButton" mnemonicParsing = "false" text = "Display Stats" GridPane.rowIndex = "4"/>
+	<Button fx:id = "resetButton" mnemonicParsing = "false" text = "Reset" GridPane.columnIndex = "1"
+	        GridPane.rowIndex = "4"/>
 </GridPane>
